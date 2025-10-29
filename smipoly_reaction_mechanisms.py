@@ -1,151 +1,495 @@
 """
 Complete reaction mechanism categorization for SMiPoly
-Maps all polymerization reactions to their mechanism types.
+Maps all polymerization reactions to their mechanism types - ALL PATTERN VARIATIONS INCLUDED.
 
 Mechanism Categories:
-- step_growth: Step-growth polymerization (polycondensation, polyaddition)
-- chain_growth: Chain-growth polymerization (addition polymerization)
-- chain_growth_ring_opening: Ring-opening chain polymerization
-- metathesis: Ring-opening metathesis polymerization (ROMP)
-- special: Special cases (COC - Cyclic Olefin Copolymerization)
+- step_growth: Step-growth polymerization (polycondensation, polyaddition) - 123 entries
+- chain_growth: Chain-growth polymerization (addition polymerization) - 310 entries
+- chain_growth_ring_opening: Ring-opening chain polymerization - 26 entries
+- metathesis: Ring-opening metathesis polymerization (ROMP) - 3 entries
+- special: Special cases (COC - Cyclic Olefin Copolymerization) - 2 entries
+
+Total: 464 entries (all SMARTS pattern variations included)
 
 Note: Post-polymerization reactions (200-210) are not included as they are
 secondary transformations applied after primary polymerization.
 """
 
-# Complete mechanism categorization with smipoly_ prefix
+# Complete mechanism categorization with smipoly_ prefix - ALL VARIATIONS
 smipoly_predefined_mechanism = {
-    # ========== STEP-GROWTH POLYMERIZATION ==========
-    # Polycondensation and polyaddition reactions
     "step_growth": [
-        # Amino acid-based
-        ["smipoly_aminCOOH_1"],  # Reaction 7: Amino acid homopolymer (e.g., nylon from amino acids)
-        ["smipoly_aminCOOH_1", "smipoly_aminCOOH_1"],  # Reaction 109: Amino acid alternating copolymer
-
-        # Carboxylic acid-based
-        ["smipoly_hydCOOH_1"],  # Reaction 6: Hydroxy carboxylic acid (e.g., PLA, PGA)
-        ["smipoly_hydCOOH_1", "smipoly_hydCOOH_1"],  # Reaction 105: Alternating copolymer
-
-        # Dicarboxylic acid + diol → Polyester
-        ["smipoly_diCOOH_1", "smipoly_diol_1"],  # Reaction 104: Polyester (e.g., PET, PBT)
-
-        # Dicarboxylic acid + diamine → Polyamide
-        ["smipoly_diCOOH_1", "smipoly_diamin_1"],  # Reaction 108: Polyamide (e.g., nylon 6,6)
-
-        # Dicyclic anhydride + primary diamine → Polyimide
-        ["smipoly_dicAnhyd_1", "smipoly_pridiamin_1"],  # Reaction 110: Polyimide (e.g., Kapton)
-
-        # Diisocyanate-based → Polyurethane
-        ["smipoly_diNCO_1", "smipoly_diol_1"],  # Reaction 111: Polyurethane (PU)
-
-        # Diepoxide + diisocyanate → Polyoxazolidone
-        ["smipoly_diepo_1", "smipoly_diNCO_1"],  # Reaction 113: Polyoxazolidone
-
-        # Diol + carbon monoxide → Polycarbonate
-        ["smipoly_diol_1", "smipoly_CO_1"],  # Reaction 106: Polycarbonate
-
-        # Hindered phenol
-        ["smipoly_hindPhenol_1"],  # Reaction 8: Polyphenol
-
-        # High-performance polymers (aromatic)
-        ["smipoly_sfonediX_1", "smipoly_diol_b_1"],  # Reaction 114: Polysulfone (PSU, PES)
-        ["smipoly_BzodiF_1", "smipoly_diol_b_1"],  # Reaction 115: Polyetherketone (PEEK)
-
-        # ===== USER-ADDED (Not in SMiPoly core but commonly used) =====
-        # Note: These use non-smipoly names for compatibility with user's existing code
-        ["di_acid_chloride", "di_amine"],  # Acid chloride route to polyamide
-        ["di_acid_chloride", "di_ol"],     # Acid chloride route to polyester
+        ['smipoly_BzodiF_1'],
+        ['smipoly_CO_1'],
+        ['smipoly_HCHO_1'],
+        ['smipoly_aminCOOH_1'],
+        ['smipoly_aminCOOH_2'],
+        ['smipoly_diCOOH_1'],
+        ['smipoly_diCOOH_2'],
+        ['smipoly_diCOOH_3'],
+        ['smipoly_diCOOH_4'],
+        ['smipoly_diCOOH_5'],
+        ['smipoly_diCOOH_6'],
+        ['smipoly_diNCO_1'],
+        ['smipoly_diNCO_2'],
+        ['smipoly_diamin_1'],
+        ['smipoly_diamin_2'],
+        ['smipoly_diamin_3'],
+        ['smipoly_diamin_4'],
+        ['smipoly_dicAnhyd_1'],
+        ['smipoly_dicAnhyd_2'],
+        ['smipoly_diepo_1'],
+        ['smipoly_diepo_2'],
+        ['smipoly_diepo_3'],
+        ['smipoly_diepo_4'],
+        ['smipoly_diepo_5'],
+        ['smipoly_diol_1'],
+        ['smipoly_diol_2'],
+        ['smipoly_diol_3'],
+        ['smipoly_diol_4'],
+        ['smipoly_diol_b_1'],
+        ['smipoly_diol_b_2'],
+        ['smipoly_diol_b_3'],
+        ['smipoly_hindPhenol_1'],
+        ['smipoly_hydCOOH_1'],
+        ['smipoly_hydCOOH_2'],
+        ['smipoly_pridiamin_1'],
+        ['smipoly_pridiamin_2'],
+        ['smipoly_sfonediX_1'],
+        ['di_acid_chloride', 'di_amine'],
+        ['di_acid_chloride', 'di_ol'],
+        ['smipoly_aminCOOH_1', 'smipoly_aminCOOH_1'],
+        ['smipoly_aminCOOH_2', 'smipoly_aminCOOH_2'],
+        ['smipoly_hydCOOH_1', 'smipoly_hydCOOH_1'],
+        ['smipoly_hydCOOH_2', 'smipoly_hydCOOH_2'],
+        ['smipoly_diCOOH_1', 'smipoly_diol_1'],
+        ['smipoly_diCOOH_1', 'smipoly_diol_2'],
+        ['smipoly_diCOOH_1', 'smipoly_diol_3'],
+        ['smipoly_diCOOH_1', 'smipoly_diol_4'],
+        ['smipoly_diCOOH_2', 'smipoly_diol_1'],
+        ['smipoly_diCOOH_2', 'smipoly_diol_2'],
+        ['smipoly_diCOOH_2', 'smipoly_diol_3'],
+        ['smipoly_diCOOH_2', 'smipoly_diol_4'],
+        ['smipoly_diCOOH_3', 'smipoly_diol_1'],
+        ['smipoly_diCOOH_3', 'smipoly_diol_2'],
+        ['smipoly_diCOOH_3', 'smipoly_diol_3'],
+        ['smipoly_diCOOH_3', 'smipoly_diol_4'],
+        ['smipoly_diCOOH_4', 'smipoly_diol_1'],
+        ['smipoly_diCOOH_4', 'smipoly_diol_2'],
+        ['smipoly_diCOOH_4', 'smipoly_diol_3'],
+        ['smipoly_diCOOH_4', 'smipoly_diol_4'],
+        ['smipoly_diCOOH_5', 'smipoly_diol_1'],
+        ['smipoly_diCOOH_5', 'smipoly_diol_2'],
+        ['smipoly_diCOOH_5', 'smipoly_diol_3'],
+        ['smipoly_diCOOH_5', 'smipoly_diol_4'],
+        ['smipoly_diCOOH_6', 'smipoly_diol_1'],
+        ['smipoly_diCOOH_6', 'smipoly_diol_2'],
+        ['smipoly_diCOOH_6', 'smipoly_diol_3'],
+        ['smipoly_diCOOH_6', 'smipoly_diol_4'],
+        ['smipoly_diCOOH_1', 'smipoly_diamin_1'],
+        ['smipoly_diCOOH_1', 'smipoly_diamin_2'],
+        ['smipoly_diCOOH_1', 'smipoly_diamin_3'],
+        ['smipoly_diCOOH_1', 'smipoly_diamin_4'],
+        ['smipoly_diCOOH_2', 'smipoly_diamin_1'],
+        ['smipoly_diCOOH_2', 'smipoly_diamin_2'],
+        ['smipoly_diCOOH_2', 'smipoly_diamin_3'],
+        ['smipoly_diCOOH_2', 'smipoly_diamin_4'],
+        ['smipoly_diCOOH_3', 'smipoly_diamin_1'],
+        ['smipoly_diCOOH_3', 'smipoly_diamin_2'],
+        ['smipoly_diCOOH_3', 'smipoly_diamin_3'],
+        ['smipoly_diCOOH_3', 'smipoly_diamin_4'],
+        ['smipoly_diCOOH_4', 'smipoly_diamin_1'],
+        ['smipoly_diCOOH_4', 'smipoly_diamin_2'],
+        ['smipoly_diCOOH_4', 'smipoly_diamin_3'],
+        ['smipoly_diCOOH_4', 'smipoly_diamin_4'],
+        ['smipoly_diCOOH_5', 'smipoly_diamin_1'],
+        ['smipoly_diCOOH_5', 'smipoly_diamin_2'],
+        ['smipoly_diCOOH_5', 'smipoly_diamin_3'],
+        ['smipoly_diCOOH_5', 'smipoly_diamin_4'],
+        ['smipoly_diCOOH_6', 'smipoly_diamin_1'],
+        ['smipoly_diCOOH_6', 'smipoly_diamin_2'],
+        ['smipoly_diCOOH_6', 'smipoly_diamin_3'],
+        ['smipoly_diCOOH_6', 'smipoly_diamin_4'],
+        ['smipoly_dicAnhyd_1', 'smipoly_pridiamin_1'],
+        ['smipoly_dicAnhyd_1', 'smipoly_pridiamin_2'],
+        ['smipoly_dicAnhyd_2', 'smipoly_pridiamin_1'],
+        ['smipoly_dicAnhyd_2', 'smipoly_pridiamin_2'],
+        ['smipoly_diNCO_1', 'smipoly_diol_1'],
+        ['smipoly_diNCO_1', 'smipoly_diol_2'],
+        ['smipoly_diNCO_1', 'smipoly_diol_3'],
+        ['smipoly_diNCO_1', 'smipoly_diol_4'],
+        ['smipoly_diNCO_2', 'smipoly_diol_1'],
+        ['smipoly_diNCO_2', 'smipoly_diol_2'],
+        ['smipoly_diNCO_2', 'smipoly_diol_3'],
+        ['smipoly_diNCO_2', 'smipoly_diol_4'],
+        ['smipoly_diepo_1', 'smipoly_diNCO_1'],
+        ['smipoly_diepo_1', 'smipoly_diNCO_2'],
+        ['smipoly_diepo_2', 'smipoly_diNCO_1'],
+        ['smipoly_diepo_2', 'smipoly_diNCO_2'],
+        ['smipoly_diepo_3', 'smipoly_diNCO_1'],
+        ['smipoly_diepo_3', 'smipoly_diNCO_2'],
+        ['smipoly_diepo_4', 'smipoly_diNCO_1'],
+        ['smipoly_diepo_4', 'smipoly_diNCO_2'],
+        ['smipoly_diepo_5', 'smipoly_diNCO_1'],
+        ['smipoly_diepo_5', 'smipoly_diNCO_2'],
+        ['smipoly_diol_1', 'smipoly_CO_1'],
+        ['smipoly_diol_2', 'smipoly_CO_1'],
+        ['smipoly_diol_3', 'smipoly_CO_1'],
+        ['smipoly_diol_4', 'smipoly_CO_1'],
+        ['smipoly_sfonediX_1', 'smipoly_diol_b_1'],
+        ['smipoly_sfonediX_1', 'smipoly_diol_b_2'],
+        ['smipoly_sfonediX_1', 'smipoly_diol_b_3'],
+        ['smipoly_BzodiF_1', 'smipoly_diol_b_1'],
+        ['smipoly_BzodiF_1', 'smipoly_diol_b_2'],
+        ['smipoly_BzodiF_1', 'smipoly_diol_b_3'],
     ],
-
-    # ========== CHAIN-GROWTH POLYMERIZATION ==========
-    # Free radical, cationic, anionic, coordination polymerization
     "chain_growth": [
-        # Basic vinyl polymerization
-        ["smipoly_vinyl_1"],  # Reaction 1: Vinyl homopolymer (e.g., PE, PP, PS, PVC)
-        ["smipoly_vinyl_1", "smipoly_vinyl_1"],  # Reaction 101: Vinyl alternating copolymer
-
-        # Cyclic olefin polymerization (non-ROMP)
-        ["smipoly_cOle_1"],  # Reaction 3: Cyclic olefin homopolymer
-        ["smipoly_vinyl_1", "smipoly_cOle_1"],  # Reaction 102: Vinyl + cyclic olefin copolymer
-        ["smipoly_cOle_1", "smipoly_cOle_1"],  # Reaction 103: Cyclic olefin alternating copolymer
-
-        # ===== DETAILED OLEFINIC MONOMER CLASSIFICATIONS =====
-        # These provide fine-grained control over olefinic polymerization
-
-        # Acrylic monomers (39 variations)
-        ["smipoly_acryl_1"],  # Acrylates, methacrylates (PMMA, PMAA, etc.)
-
-        # Electron-withdrawing olefins (156 variations)
-        ["smipoly_bEWole_1"],  # Nitrile, isocyanate, sulfone, phosphonate substituted
-
-        # Styrenic monomers (43 variations)
-        ["smipoly_styryl_1"],  # Styrene, substituted styrenes (PS, ABS)
-
-        # Allyl monomers (6 variations)
-        ["smipoly_allyl_1"],  # Allyl ethers, allyl amines, allyl benzene
-
-        # Halogenated olefins (10 variations)
-        ["smipoly_haloCH_1"],  # Fluorinated, chlorinated olefins (PTFE, PVDF, PVC)
-
-        # Vinyl esters (6 variations)
-        ["smipoly_vinylester_1"],  # Vinyl acetate (PVAc), vinyl amides
-
-        # Maleic monomers (2 variations)
-        ["smipoly_malei_1"],  # Maleimide-based polymers
-
-        # Conjugated dienes (6 variations)
-        ["smipoly_conjdiene_1"],  # Butadiene, isoprene (polybutadiene, polyisoprene)
-
-        # Vinyl ethers (9 variations)
-        ["smipoly_vinylether_1"],  # Vinyl ether polymers
-
-        # Tertiary carbocation-forming olefins (2 variations)
-        ["smipoly_tertcatCH_1"],  # Isobutylene (polyisobutylene)
-
-        # Aliphatic olefins (2 variations)
-        ["smipoly_aliphCH_1"],  # Simple aliphatic olefins
-
-        # ===== USER-ADDED (Not in SMiPoly core) =====
-        ["acetylene"],  # Polyacetylene, polydiacetylene
+        ['smipoly_acryl_1'],
+        ['smipoly_acryl_2'],
+        ['smipoly_acryl_3'],
+        ['smipoly_acryl_4'],
+        ['smipoly_acryl_5'],
+        ['smipoly_acryl_6'],
+        ['smipoly_acryl_7'],
+        ['smipoly_acryl_8'],
+        ['smipoly_acryl_9'],
+        ['smipoly_acryl_10'],
+        ['smipoly_acryl_11'],
+        ['smipoly_acryl_12'],
+        ['smipoly_acryl_13'],
+        ['smipoly_acryl_14'],
+        ['smipoly_acryl_15'],
+        ['smipoly_acryl_16'],
+        ['smipoly_acryl_17'],
+        ['smipoly_acryl_18'],
+        ['smipoly_acryl_19'],
+        ['smipoly_acryl_20'],
+        ['smipoly_acryl_21'],
+        ['smipoly_acryl_22'],
+        ['smipoly_acryl_23'],
+        ['smipoly_acryl_24'],
+        ['smipoly_acryl_25'],
+        ['smipoly_acryl_26'],
+        ['smipoly_acryl_27'],
+        ['smipoly_acryl_28'],
+        ['smipoly_acryl_29'],
+        ['smipoly_acryl_30'],
+        ['smipoly_acryl_31'],
+        ['smipoly_acryl_32'],
+        ['smipoly_acryl_33'],
+        ['smipoly_acryl_34'],
+        ['smipoly_acryl_35'],
+        ['smipoly_acryl_36'],
+        ['smipoly_acryl_37'],
+        ['smipoly_acryl_38'],
+        ['smipoly_acryl_39'],
+        ['smipoly_aliphCH_1'],
+        ['smipoly_aliphCH_2'],
+        ['smipoly_allyl_1'],
+        ['smipoly_allyl_2'],
+        ['smipoly_allyl_3'],
+        ['smipoly_allyl_4'],
+        ['smipoly_allyl_5'],
+        ['smipoly_allyl_6'],
+        ['smipoly_bEWole_1'],
+        ['smipoly_bEWole_2'],
+        ['smipoly_bEWole_3'],
+        ['smipoly_bEWole_4'],
+        ['smipoly_bEWole_5'],
+        ['smipoly_bEWole_6'],
+        ['smipoly_bEWole_7'],
+        ['smipoly_bEWole_8'],
+        ['smipoly_bEWole_9'],
+        ['smipoly_bEWole_10'],
+        ['smipoly_bEWole_11'],
+        ['smipoly_bEWole_12'],
+        ['smipoly_bEWole_13'],
+        ['smipoly_bEWole_14'],
+        ['smipoly_bEWole_15'],
+        ['smipoly_bEWole_16'],
+        ['smipoly_bEWole_17'],
+        ['smipoly_bEWole_18'],
+        ['smipoly_bEWole_19'],
+        ['smipoly_bEWole_20'],
+        ['smipoly_bEWole_21'],
+        ['smipoly_bEWole_22'],
+        ['smipoly_bEWole_23'],
+        ['smipoly_bEWole_24'],
+        ['smipoly_bEWole_25'],
+        ['smipoly_bEWole_26'],
+        ['smipoly_bEWole_27'],
+        ['smipoly_bEWole_28'],
+        ['smipoly_bEWole_29'],
+        ['smipoly_bEWole_30'],
+        ['smipoly_bEWole_31'],
+        ['smipoly_bEWole_32'],
+        ['smipoly_bEWole_33'],
+        ['smipoly_bEWole_34'],
+        ['smipoly_bEWole_35'],
+        ['smipoly_bEWole_36'],
+        ['smipoly_bEWole_37'],
+        ['smipoly_bEWole_38'],
+        ['smipoly_bEWole_39'],
+        ['smipoly_bEWole_40'],
+        ['smipoly_bEWole_41'],
+        ['smipoly_bEWole_42'],
+        ['smipoly_bEWole_43'],
+        ['smipoly_bEWole_44'],
+        ['smipoly_bEWole_45'],
+        ['smipoly_bEWole_46'],
+        ['smipoly_bEWole_47'],
+        ['smipoly_bEWole_48'],
+        ['smipoly_bEWole_49'],
+        ['smipoly_bEWole_50'],
+        ['smipoly_bEWole_51'],
+        ['smipoly_bEWole_52'],
+        ['smipoly_bEWole_53'],
+        ['smipoly_bEWole_54'],
+        ['smipoly_bEWole_55'],
+        ['smipoly_bEWole_56'],
+        ['smipoly_bEWole_57'],
+        ['smipoly_bEWole_58'],
+        ['smipoly_bEWole_59'],
+        ['smipoly_bEWole_60'],
+        ['smipoly_bEWole_61'],
+        ['smipoly_bEWole_62'],
+        ['smipoly_bEWole_63'],
+        ['smipoly_bEWole_64'],
+        ['smipoly_bEWole_65'],
+        ['smipoly_bEWole_66'],
+        ['smipoly_bEWole_67'],
+        ['smipoly_bEWole_68'],
+        ['smipoly_bEWole_69'],
+        ['smipoly_bEWole_70'],
+        ['smipoly_bEWole_71'],
+        ['smipoly_bEWole_72'],
+        ['smipoly_bEWole_73'],
+        ['smipoly_bEWole_74'],
+        ['smipoly_bEWole_75'],
+        ['smipoly_bEWole_76'],
+        ['smipoly_bEWole_77'],
+        ['smipoly_bEWole_78'],
+        ['smipoly_bEWole_79'],
+        ['smipoly_bEWole_80'],
+        ['smipoly_bEWole_81'],
+        ['smipoly_bEWole_82'],
+        ['smipoly_bEWole_83'],
+        ['smipoly_bEWole_84'],
+        ['smipoly_bEWole_85'],
+        ['smipoly_bEWole_86'],
+        ['smipoly_bEWole_87'],
+        ['smipoly_bEWole_88'],
+        ['smipoly_bEWole_89'],
+        ['smipoly_bEWole_90'],
+        ['smipoly_bEWole_91'],
+        ['smipoly_bEWole_92'],
+        ['smipoly_bEWole_93'],
+        ['smipoly_bEWole_94'],
+        ['smipoly_bEWole_95'],
+        ['smipoly_bEWole_96'],
+        ['smipoly_bEWole_97'],
+        ['smipoly_bEWole_98'],
+        ['smipoly_bEWole_99'],
+        ['smipoly_bEWole_100'],
+        ['smipoly_bEWole_101'],
+        ['smipoly_bEWole_102'],
+        ['smipoly_bEWole_103'],
+        ['smipoly_bEWole_104'],
+        ['smipoly_bEWole_105'],
+        ['smipoly_bEWole_106'],
+        ['smipoly_bEWole_107'],
+        ['smipoly_bEWole_108'],
+        ['smipoly_bEWole_109'],
+        ['smipoly_bEWole_110'],
+        ['smipoly_bEWole_111'],
+        ['smipoly_bEWole_112'],
+        ['smipoly_bEWole_113'],
+        ['smipoly_bEWole_114'],
+        ['smipoly_bEWole_115'],
+        ['smipoly_bEWole_116'],
+        ['smipoly_bEWole_117'],
+        ['smipoly_bEWole_118'],
+        ['smipoly_bEWole_119'],
+        ['smipoly_bEWole_120'],
+        ['smipoly_bEWole_121'],
+        ['smipoly_bEWole_122'],
+        ['smipoly_bEWole_123'],
+        ['smipoly_bEWole_124'],
+        ['smipoly_bEWole_125'],
+        ['smipoly_bEWole_126'],
+        ['smipoly_bEWole_127'],
+        ['smipoly_bEWole_128'],
+        ['smipoly_bEWole_129'],
+        ['smipoly_bEWole_130'],
+        ['smipoly_bEWole_131'],
+        ['smipoly_bEWole_132'],
+        ['smipoly_bEWole_133'],
+        ['smipoly_bEWole_134'],
+        ['smipoly_bEWole_135'],
+        ['smipoly_bEWole_136'],
+        ['smipoly_bEWole_137'],
+        ['smipoly_bEWole_138'],
+        ['smipoly_bEWole_139'],
+        ['smipoly_bEWole_140'],
+        ['smipoly_bEWole_141'],
+        ['smipoly_bEWole_142'],
+        ['smipoly_bEWole_143'],
+        ['smipoly_bEWole_144'],
+        ['smipoly_bEWole_145'],
+        ['smipoly_bEWole_146'],
+        ['smipoly_bEWole_147'],
+        ['smipoly_bEWole_148'],
+        ['smipoly_bEWole_149'],
+        ['smipoly_bEWole_150'],
+        ['smipoly_bEWole_151'],
+        ['smipoly_bEWole_152'],
+        ['smipoly_bEWole_153'],
+        ['smipoly_bEWole_154'],
+        ['smipoly_bEWole_155'],
+        ['smipoly_bEWole_156'],
+        ['smipoly_cOle_1'],
+        ['smipoly_cOle_2'],
+        ['smipoly_conjdiene_1'],
+        ['smipoly_conjdiene_2'],
+        ['smipoly_conjdiene_3'],
+        ['smipoly_conjdiene_4'],
+        ['smipoly_conjdiene_5'],
+        ['smipoly_conjdiene_6'],
+        ['smipoly_haloCH_1'],
+        ['smipoly_haloCH_2'],
+        ['smipoly_haloCH_3'],
+        ['smipoly_haloCH_4'],
+        ['smipoly_haloCH_5'],
+        ['smipoly_haloCH_6'],
+        ['smipoly_haloCH_7'],
+        ['smipoly_haloCH_8'],
+        ['smipoly_haloCH_9'],
+        ['smipoly_haloCH_10'],
+        ['smipoly_malei_1'],
+        ['smipoly_malei_2'],
+        ['smipoly_styryl_1'],
+        ['smipoly_styryl_2'],
+        ['smipoly_styryl_3'],
+        ['smipoly_styryl_4'],
+        ['smipoly_styryl_5'],
+        ['smipoly_styryl_6'],
+        ['smipoly_styryl_7'],
+        ['smipoly_styryl_8'],
+        ['smipoly_styryl_9'],
+        ['smipoly_styryl_10'],
+        ['smipoly_styryl_11'],
+        ['smipoly_styryl_12'],
+        ['smipoly_styryl_13'],
+        ['smipoly_styryl_14'],
+        ['smipoly_styryl_15'],
+        ['smipoly_styryl_16'],
+        ['smipoly_styryl_17'],
+        ['smipoly_styryl_18'],
+        ['smipoly_styryl_19'],
+        ['smipoly_styryl_20'],
+        ['smipoly_styryl_21'],
+        ['smipoly_styryl_22'],
+        ['smipoly_styryl_23'],
+        ['smipoly_styryl_24'],
+        ['smipoly_styryl_25'],
+        ['smipoly_styryl_26'],
+        ['smipoly_styryl_27'],
+        ['smipoly_styryl_28'],
+        ['smipoly_styryl_29'],
+        ['smipoly_styryl_30'],
+        ['smipoly_styryl_31'],
+        ['smipoly_styryl_32'],
+        ['smipoly_styryl_33'],
+        ['smipoly_styryl_34'],
+        ['smipoly_styryl_35'],
+        ['smipoly_styryl_36'],
+        ['smipoly_styryl_37'],
+        ['smipoly_styryl_38'],
+        ['smipoly_styryl_39'],
+        ['smipoly_styryl_40'],
+        ['smipoly_styryl_41'],
+        ['smipoly_styryl_42'],
+        ['smipoly_styryl_43'],
+        ['smipoly_tertcatCH_1'],
+        ['smipoly_tertcatCH_2'],
+        ['smipoly_vinyl_1'],
+        ['smipoly_vinyl_2'],
+        ['smipoly_vinyl_3'],
+        ['smipoly_vinyl_4'],
+        ['smipoly_vinyl_5'],
+        ['smipoly_vinyl_6'],
+        ['smipoly_vinylester_1'],
+        ['smipoly_vinylester_2'],
+        ['smipoly_vinylester_3'],
+        ['smipoly_vinylester_4'],
+        ['smipoly_vinylester_5'],
+        ['smipoly_vinylester_6'],
+        ['smipoly_vinylether_1'],
+        ['smipoly_vinylether_2'],
+        ['smipoly_vinylether_3'],
+        ['smipoly_vinylether_4'],
+        ['smipoly_vinylether_5'],
+        ['smipoly_vinylether_6'],
+        ['smipoly_vinylether_7'],
+        ['smipoly_vinylether_8'],
+        ['smipoly_vinylether_9'],
+        ['acetylene'],
+        ['smipoly_vinyl_1', 'smipoly_vinyl_1'],
+        ['smipoly_vinyl_2', 'smipoly_vinyl_2'],
+        ['smipoly_vinyl_3', 'smipoly_vinyl_3'],
+        ['smipoly_vinyl_4', 'smipoly_vinyl_4'],
+        ['smipoly_vinyl_5', 'smipoly_vinyl_5'],
+        ['smipoly_vinyl_6', 'smipoly_vinyl_6'],
+        ['smipoly_vinyl_1', 'smipoly_cOle_1'],
+        ['smipoly_vinyl_1', 'smipoly_cOle_2'],
+        ['smipoly_vinyl_2', 'smipoly_cOle_1'],
+        ['smipoly_vinyl_2', 'smipoly_cOle_2'],
+        ['smipoly_vinyl_3', 'smipoly_cOle_1'],
+        ['smipoly_vinyl_3', 'smipoly_cOle_2'],
+        ['smipoly_vinyl_4', 'smipoly_cOle_1'],
+        ['smipoly_vinyl_4', 'smipoly_cOle_2'],
+        ['smipoly_vinyl_5', 'smipoly_cOle_1'],
+        ['smipoly_vinyl_5', 'smipoly_cOle_2'],
+        ['smipoly_vinyl_6', 'smipoly_cOle_1'],
+        ['smipoly_vinyl_6', 'smipoly_cOle_2'],
+        ['smipoly_cOle_1', 'smipoly_cOle_1'],
+        ['smipoly_cOle_2', 'smipoly_cOle_2'],
     ],
-
-    # ========== RING-OPENING CHAIN POLYMERIZATION ==========
-    # Chain polymerization via ring-opening mechanism
     "chain_growth_ring_opening": [
-        # Cyclic esters
-        ["smipoly_lactone_1"],  # Reaction 4: Polylactone (PCL, PLA via lactide)
-
-        # Cyclic amides
-        ["smipoly_lactam_1"],  # Reaction 5: Polylactam (nylon 6, nylon 12)
-
-        # Epoxides
-        ["smipoly_epo_1"],  # Reaction 2: Polyether via epoxide (PEO, PPO)
-
-        # Cyclic anhydride + epoxide copolymer
-        ["smipoly_cAnhyd_1", "smipoly_epo_1"],  # Reaction 112: Alternating copolymer
-
-        # ===== USER-ADDED (Not in SMiPoly core) =====
-        ["cyclic_ether"],      # Tetrahydrofuran (PTHF), ethylene oxide
-        ["cyclic_carbonate"],  # Cyclic carbonate polymerization
-        ["cyclic_sulfide"],    # Polysulfide via ring-opening
+        ['smipoly_cAnhyd_1'],
+        ['smipoly_cAnhyd_2'],
+        ['smipoly_epo_1'],
+        ['smipoly_epo_2'],
+        ['smipoly_epo_3'],
+        ['smipoly_epo_4'],
+        ['smipoly_epo_5'],
+        ['smipoly_lactam_1'],
+        ['smipoly_lactam_2'],
+        ['smipoly_lactam_3'],
+        ['smipoly_lactone_1'],
+        ['smipoly_lactone_2'],
+        ['smipoly_lactone_3'],
+        ['cyclic_ether'],
+        ['cyclic_carbonate'],
+        ['cyclic_sulfide'],
+        ['smipoly_cAnhyd_1', 'smipoly_epo_1'],
+        ['smipoly_cAnhyd_1', 'smipoly_epo_2'],
+        ['smipoly_cAnhyd_1', 'smipoly_epo_3'],
+        ['smipoly_cAnhyd_1', 'smipoly_epo_4'],
+        ['smipoly_cAnhyd_1', 'smipoly_epo_5'],
+        ['smipoly_cAnhyd_2', 'smipoly_epo_1'],
+        ['smipoly_cAnhyd_2', 'smipoly_epo_2'],
+        ['smipoly_cAnhyd_2', 'smipoly_epo_3'],
+        ['smipoly_cAnhyd_2', 'smipoly_epo_4'],
+        ['smipoly_cAnhyd_2', 'smipoly_epo_5'],
     ],
-
-    # ========== METATHESIS POLYMERIZATION ==========
-    # Ring-opening metathesis polymerization (ROMP) and related
     "metathesis": [
-        # ROMP
-        ["smipoly_cycCH_1"],  # Reaction 1050: ROMP of cyclic olefins (norbornene, cyclooctene)
-
-        # ===== USER-ADDED (Not in SMiPoly core) =====
-        ["terminal_diene"],          # Diene metathesis polymerization
-        ["conjugated_di_bromide"],   # Cross-coupling metathesis
+        ['smipoly_cycCH_1'],
+        ['terminal_diene'],
+        ['conjugated_di_bromide'],
     ],
-
-    # ========== SPECIAL POLYMERIZATION MECHANISMS ==========
-    # Unique or hybrid mechanisms
     "special": [
-        # COC: Cyclic Olefin Copolymerization (coordination polymerization of cyclic olefins)
-        ["smipoly_cycCH_1", "smipoly_aliphCH_1"],  # Reaction 1051: COC (e.g., TOPAS, ARTON)
+        ['smipoly_cycCH_1', 'smipoly_aliphCH_1'],
+        ['smipoly_cycCH_1', 'smipoly_aliphCH_2'],
     ],
 }
 
