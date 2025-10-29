@@ -19,37 +19,37 @@ smipoly_predefined_mechanism = {
     # Polycondensation and polyaddition reactions
     "step_growth": [
         # Amino acid-based
-        ["smipoly_aminCOOH"],  # Reaction 7: Amino acid homopolymer (e.g., nylon from amino acids)
-        ["smipoly_aminCOOH", "smipoly_aminCOOH"],  # Reaction 109: Amino acid alternating copolymer
+        ["smipoly_aminCOOH_1"],  # Reaction 7: Amino acid homopolymer (e.g., nylon from amino acids)
+        ["smipoly_aminCOOH_1", "smipoly_aminCOOH_1"],  # Reaction 109: Amino acid alternating copolymer
 
         # Carboxylic acid-based
-        ["smipoly_hydCOOH"],  # Reaction 6: Hydroxy carboxylic acid (e.g., PLA, PGA)
-        ["smipoly_hydCOOH", "smipoly_hydCOOH"],  # Reaction 105: Alternating copolymer
+        ["smipoly_hydCOOH_1"],  # Reaction 6: Hydroxy carboxylic acid (e.g., PLA, PGA)
+        ["smipoly_hydCOOH_1", "smipoly_hydCOOH_1"],  # Reaction 105: Alternating copolymer
 
         # Dicarboxylic acid + diol → Polyester
-        ["smipoly_diCOOH", "smipoly_diol"],  # Reaction 104: Polyester (e.g., PET, PBT)
+        ["smipoly_diCOOH_1", "smipoly_diol_1"],  # Reaction 104: Polyester (e.g., PET, PBT)
 
         # Dicarboxylic acid + diamine → Polyamide
-        ["smipoly_diCOOH", "smipoly_diamin"],  # Reaction 108: Polyamide (e.g., nylon 6,6)
+        ["smipoly_diCOOH_1", "smipoly_diamin_1"],  # Reaction 108: Polyamide (e.g., nylon 6,6)
 
         # Dicyclic anhydride + primary diamine → Polyimide
-        ["smipoly_dicAnhyd", "smipoly_pridiamin"],  # Reaction 110: Polyimide (e.g., Kapton)
+        ["smipoly_dicAnhyd_1", "smipoly_pridiamin_1"],  # Reaction 110: Polyimide (e.g., Kapton)
 
         # Diisocyanate-based → Polyurethane
-        ["smipoly_diNCO", "smipoly_diol"],  # Reaction 111: Polyurethane (PU)
+        ["smipoly_diNCO_1", "smipoly_diol_1"],  # Reaction 111: Polyurethane (PU)
 
         # Diepoxide + diisocyanate → Polyoxazolidone
-        ["smipoly_diepo", "smipoly_diNCO"],  # Reaction 113: Polyoxazolidone
+        ["smipoly_diepo_1", "smipoly_diNCO_1"],  # Reaction 113: Polyoxazolidone
 
         # Diol + carbon monoxide → Polycarbonate
-        ["smipoly_diol", "smipoly_CO"],  # Reaction 106: Polycarbonate
+        ["smipoly_diol_1", "smipoly_CO_1"],  # Reaction 106: Polycarbonate
 
         # Hindered phenol
-        ["smipoly_hindPhenol"],  # Reaction 8: Polyphenol
+        ["smipoly_hindPhenol_1"],  # Reaction 8: Polyphenol
 
         # High-performance polymers (aromatic)
-        ["smipoly_sfonediX", "smipoly_diol_b"],  # Reaction 114: Polysulfone (PSU, PES)
-        ["smipoly_BzodiF", "smipoly_diol_b"],  # Reaction 115: Polyetherketone (PEEK)
+        ["smipoly_sfonediX_1", "smipoly_diol_b_1"],  # Reaction 114: Polysulfone (PSU, PES)
+        ["smipoly_BzodiF_1", "smipoly_diol_b_1"],  # Reaction 115: Polyetherketone (PEEK)
 
         # ===== USER-ADDED (Not in SMiPoly core but commonly used) =====
         # Note: These use non-smipoly names for compatibility with user's existing code
@@ -61,49 +61,49 @@ smipoly_predefined_mechanism = {
     # Free radical, cationic, anionic, coordination polymerization
     "chain_growth": [
         # Basic vinyl polymerization
-        ["smipoly_vinyl"],  # Reaction 1: Vinyl homopolymer (e.g., PE, PP, PS, PVC)
-        ["smipoly_vinyl", "smipoly_vinyl"],  # Reaction 101: Vinyl alternating copolymer
+        ["smipoly_vinyl_1"],  # Reaction 1: Vinyl homopolymer (e.g., PE, PP, PS, PVC)
+        ["smipoly_vinyl_1", "smipoly_vinyl_1"],  # Reaction 101: Vinyl alternating copolymer
 
         # Cyclic olefin polymerization (non-ROMP)
-        ["smipoly_cOle"],  # Reaction 3: Cyclic olefin homopolymer
-        ["smipoly_vinyl", "smipoly_cOle"],  # Reaction 102: Vinyl + cyclic olefin copolymer
-        ["smipoly_cOle", "smipoly_cOle"],  # Reaction 103: Cyclic olefin alternating copolymer
+        ["smipoly_cOle_1"],  # Reaction 3: Cyclic olefin homopolymer
+        ["smipoly_vinyl_1", "smipoly_cOle_1"],  # Reaction 102: Vinyl + cyclic olefin copolymer
+        ["smipoly_cOle_1", "smipoly_cOle_1"],  # Reaction 103: Cyclic olefin alternating copolymer
 
         # ===== DETAILED OLEFINIC MONOMER CLASSIFICATIONS =====
         # These provide fine-grained control over olefinic polymerization
 
         # Acrylic monomers (39 variations)
-        ["smipoly_acryl"],  # Acrylates, methacrylates (PMMA, PMAA, etc.)
+        ["smipoly_acryl_1"],  # Acrylates, methacrylates (PMMA, PMAA, etc.)
 
         # Electron-withdrawing olefins (156 variations)
-        ["smipoly_bEWole"],  # Nitrile, isocyanate, sulfone, phosphonate substituted
+        ["smipoly_bEWole_1"],  # Nitrile, isocyanate, sulfone, phosphonate substituted
 
         # Styrenic monomers (43 variations)
-        ["smipoly_styryl"],  # Styrene, substituted styrenes (PS, ABS)
+        ["smipoly_styryl_1"],  # Styrene, substituted styrenes (PS, ABS)
 
         # Allyl monomers (6 variations)
-        ["smipoly_allyl"],  # Allyl ethers, allyl amines, allyl benzene
+        ["smipoly_allyl_1"],  # Allyl ethers, allyl amines, allyl benzene
 
         # Halogenated olefins (10 variations)
-        ["smipoly_haloCH"],  # Fluorinated, chlorinated olefins (PTFE, PVDF, PVC)
+        ["smipoly_haloCH_1"],  # Fluorinated, chlorinated olefins (PTFE, PVDF, PVC)
 
         # Vinyl esters (6 variations)
-        ["smipoly_vinylester"],  # Vinyl acetate (PVAc), vinyl amides
+        ["smipoly_vinylester_1"],  # Vinyl acetate (PVAc), vinyl amides
 
         # Maleic monomers (2 variations)
-        ["smipoly_malei"],  # Maleimide-based polymers
+        ["smipoly_malei_1"],  # Maleimide-based polymers
 
         # Conjugated dienes (6 variations)
-        ["smipoly_conjdiene"],  # Butadiene, isoprene (polybutadiene, polyisoprene)
+        ["smipoly_conjdiene_1"],  # Butadiene, isoprene (polybutadiene, polyisoprene)
 
         # Vinyl ethers (9 variations)
-        ["smipoly_vinylether"],  # Vinyl ether polymers
+        ["smipoly_vinylether_1"],  # Vinyl ether polymers
 
         # Tertiary carbocation-forming olefins (2 variations)
-        ["smipoly_tertcatCH"],  # Isobutylene (polyisobutylene)
+        ["smipoly_tertcatCH_1"],  # Isobutylene (polyisobutylene)
 
         # Aliphatic olefins (2 variations)
-        ["smipoly_aliphCH"],  # Simple aliphatic olefins
+        ["smipoly_aliphCH_1"],  # Simple aliphatic olefins
 
         # ===== USER-ADDED (Not in SMiPoly core) =====
         ["acetylene"],  # Polyacetylene, polydiacetylene
@@ -113,16 +113,16 @@ smipoly_predefined_mechanism = {
     # Chain polymerization via ring-opening mechanism
     "chain_growth_ring_opening": [
         # Cyclic esters
-        ["smipoly_lactone"],  # Reaction 4: Polylactone (PCL, PLA via lactide)
+        ["smipoly_lactone_1"],  # Reaction 4: Polylactone (PCL, PLA via lactide)
 
         # Cyclic amides
-        ["smipoly_lactam"],  # Reaction 5: Polylactam (nylon 6, nylon 12)
+        ["smipoly_lactam_1"],  # Reaction 5: Polylactam (nylon 6, nylon 12)
 
         # Epoxides
-        ["smipoly_epo"],  # Reaction 2: Polyether via epoxide (PEO, PPO)
+        ["smipoly_epo_1"],  # Reaction 2: Polyether via epoxide (PEO, PPO)
 
         # Cyclic anhydride + epoxide copolymer
-        ["smipoly_cAnhyd", "smipoly_epo"],  # Reaction 112: Alternating copolymer
+        ["smipoly_cAnhyd_1", "smipoly_epo_1"],  # Reaction 112: Alternating copolymer
 
         # ===== USER-ADDED (Not in SMiPoly core) =====
         ["cyclic_ether"],      # Tetrahydrofuran (PTHF), ethylene oxide
@@ -134,7 +134,7 @@ smipoly_predefined_mechanism = {
     # Ring-opening metathesis polymerization (ROMP) and related
     "metathesis": [
         # ROMP
-        ["smipoly_cycCH"],  # Reaction 1050: ROMP of cyclic olefins (norbornene, cyclooctene)
+        ["smipoly_cycCH_1"],  # Reaction 1050: ROMP of cyclic olefins (norbornene, cyclooctene)
 
         # ===== USER-ADDED (Not in SMiPoly core) =====
         ["terminal_diene"],          # Diene metathesis polymerization
@@ -145,7 +145,7 @@ smipoly_predefined_mechanism = {
     # Unique or hybrid mechanisms
     "special": [
         # COC: Cyclic Olefin Copolymerization (coordination polymerization of cyclic olefins)
-        ["smipoly_cycCH", "smipoly_aliphCH"],  # Reaction 1051: COC (e.g., TOPAS, ARTON)
+        ["smipoly_cycCH_1", "smipoly_aliphCH_1"],  # Reaction 1051: COC (e.g., TOPAS, ARTON)
     ],
 }
 
@@ -200,46 +200,47 @@ smipoly_reaction_number_to_mechanism = {
 
 # ========== MONOMER CLASS TO MECHANISM MAPPING ==========
 # Maps monomer classes to their typical polymerization mechanisms
+# Note: These use _1 suffix to match the numbered SMARTS patterns
 smipoly_monomer_to_mechanism = {
     # Step-growth monomers
-    "smipoly_aminCOOH": ["step_growth"],
-    "smipoly_hydCOOH": ["step_growth"],
-    "smipoly_diCOOH": ["step_growth"],
-    "smipoly_diol": ["step_growth"],
-    "smipoly_diol_b": ["step_growth"],
-    "smipoly_diamin": ["step_growth"],
-    "smipoly_pridiamin": ["step_growth"],
-    "smipoly_diNCO": ["step_growth"],
-    "smipoly_dicAnhyd": ["step_growth"],
-    "smipoly_diepo": ["step_growth"],
-    "smipoly_hindPhenol": ["step_growth"],
-    "smipoly_sfonediX": ["step_growth"],
-    "smipoly_BzodiF": ["step_growth"],
-    "smipoly_CO": ["step_growth"],
+    "smipoly_aminCOOH_1": ["step_growth"],
+    "smipoly_hydCOOH_1": ["step_growth"],
+    "smipoly_diCOOH_1": ["step_growth"],
+    "smipoly_diol_1": ["step_growth"],
+    "smipoly_diol_b_1": ["step_growth"],
+    "smipoly_diamin_1": ["step_growth"],
+    "smipoly_pridiamin_1": ["step_growth"],
+    "smipoly_diNCO_1": ["step_growth"],
+    "smipoly_dicAnhyd_1": ["step_growth"],
+    "smipoly_diepo_1": ["step_growth"],
+    "smipoly_hindPhenol_1": ["step_growth"],
+    "smipoly_sfonediX_1": ["step_growth"],
+    "smipoly_BzodiF_1": ["step_growth"],
+    "smipoly_CO_1": ["step_growth"],
 
     # Chain-growth monomers
-    "smipoly_vinyl": ["chain_growth"],
-    "smipoly_acryl": ["chain_growth"],
-    "smipoly_bEWole": ["chain_growth"],
-    "smipoly_styryl": ["chain_growth"],
-    "smipoly_allyl": ["chain_growth"],
-    "smipoly_haloCH": ["chain_growth"],
-    "smipoly_vinylester": ["chain_growth"],
-    "smipoly_malei": ["chain_growth"],
-    "smipoly_conjdiene": ["chain_growth"],
-    "smipoly_vinylether": ["chain_growth"],
-    "smipoly_tertcatCH": ["chain_growth"],
-    "smipoly_aliphCH": ["chain_growth"],
+    "smipoly_vinyl_1": ["chain_growth"],
+    "smipoly_acryl_1": ["chain_growth"],
+    "smipoly_bEWole_1": ["chain_growth"],
+    "smipoly_styryl_1": ["chain_growth"],
+    "smipoly_allyl_1": ["chain_growth"],
+    "smipoly_haloCH_1": ["chain_growth"],
+    "smipoly_vinylester_1": ["chain_growth"],
+    "smipoly_malei_1": ["chain_growth"],
+    "smipoly_conjdiene_1": ["chain_growth"],
+    "smipoly_vinylether_1": ["chain_growth"],
+    "smipoly_tertcatCH_1": ["chain_growth"],
+    "smipoly_aliphCH_1": ["chain_growth"],
 
     # Ring-opening chain polymerization
-    "smipoly_lactone": ["chain_growth_ring_opening"],
-    "smipoly_lactam": ["chain_growth_ring_opening"],
-    "smipoly_epo": ["chain_growth_ring_opening"],
-    "smipoly_cAnhyd": ["chain_growth_ring_opening"],
+    "smipoly_lactone_1": ["chain_growth_ring_opening"],
+    "smipoly_lactam_1": ["chain_growth_ring_opening"],
+    "smipoly_epo_1": ["chain_growth_ring_opening"],
+    "smipoly_cAnhyd_1": ["chain_growth_ring_opening"],
 
     # Metathesis (can also be chain_growth in some cases)
-    "smipoly_cycCH": ["metathesis", "chain_growth", "special"],  # ROMP, or coordination polymerization
-    "smipoly_cOle": ["chain_growth"],  # Cyclic olefin (non-ROMP)
+    "smipoly_cycCH_1": ["metathesis", "chain_growth", "special"],  # ROMP, or coordination polymerization
+    "smipoly_cOle_1": ["chain_growth"],  # Cyclic olefin (non-ROMP)
 }
 
 # ========== POST-POLYMERIZATION REACTIONS ==========
@@ -265,17 +266,36 @@ def get_mechanism_for_monomers(monomers):
     Get the polymerization mechanism for a given set of monomers.
 
     Args:
-        monomers: List of monomer names (with or without smipoly_ prefix)
+        monomers: List of monomer names (with or without smipoly_ prefix and/or _number suffix)
+                  Can use user-friendly names (e.g., "vinyl", "di_amine") or
+                  smipoly names (e.g., "smipoly_vinyl_1", "smipoly_diamin_1")
 
     Returns:
         List of possible mechanism categories
     """
-    # Ensure monomers have smipoly_ prefix
+    # Normalize monomers: ensure smipoly_ prefix and _1 suffix
     normalized = []
     for m in monomers:
+        # First, try to map using name_mapping
+        if m in name_mapping:
+            normalized.append(name_mapping[m])
+            continue
+
+        # If it doesn't start with smipoly_, add it
         if not m.startswith("smipoly_"):
-            normalized.append(f"smipoly_{m}")
-        else:
+            # Check if it's a user-added monomer (not in SMiPoly)
+            if m in ["di_acid_chloride", "cyclic_ether", "cyclic_carbonate",
+                     "cyclic_sulfide", "acetylene", "terminal_diene", "conjugated_di_bromide"]:
+                normalized.append(m)
+                continue
+            else:
+                m = f"smipoly_{m}"
+
+        # If it doesn't have a number suffix and it's a smipoly_ name, add _1
+        if m.startswith("smipoly_") and not any(m.endswith(f"_{i}") for i in range(1, 200)):
+            m = f"{m}_1"
+
+        if m not in normalized:
             normalized.append(m)
 
     # Check predefined_mechanism for exact match
@@ -392,47 +412,47 @@ predefined_mechanism = {
     ],
 }
 
-# Mapping from user-friendly names to smipoly_ names
+# Mapping from user-friendly names to smipoly_ names (with _1 suffix)
 name_mapping = {
     # User name → SMiPoly name
-    "amino_acid": "smipoly_aminCOOH",
-    "hydroxy_carboxylic_acid": "smipoly_hydCOOH",
-    "di_carboxylic_acid": "smipoly_diCOOH",
-    "di_ol": "smipoly_diol",
-    "di_amine": "smipoly_diamin",
-    "primary_di_amine": "smipoly_pridiamin",
-    "di_isocyanate": "smipoly_diNCO",
-    "di_cyclic_anhydride": "smipoly_dicAnhyd",
-    "di_epoxide": "smipoly_diepo",
-    "hindered_phenol": "smipoly_hindPhenol",
-    "bis_p_halogenated_aryl_sulfone": "smipoly_sfonediX",
-    "bis_p_fluoroaryl_ketone": "smipoly_BzodiF",
-    "carbon_monoxide": "smipoly_CO",
-    "formaldehyde": "smipoly_HCHO",
+    "amino_acid": "smipoly_aminCOOH_1",
+    "hydroxy_carboxylic_acid": "smipoly_hydCOOH_1",
+    "di_carboxylic_acid": "smipoly_diCOOH_1",
+    "di_ol": "smipoly_diol_1",
+    "di_amine": "smipoly_diamin_1",
+    "primary_di_amine": "smipoly_pridiamin_1",
+    "di_isocyanate": "smipoly_diNCO_1",
+    "di_cyclic_anhydride": "smipoly_dicAnhyd_1",
+    "di_epoxide": "smipoly_diepo_1",
+    "hindered_phenol": "smipoly_hindPhenol_1",
+    "bis_p_halogenated_aryl_sulfone": "smipoly_sfonediX_1",
+    "bis_p_fluoroaryl_ketone": "smipoly_BzodiF_1",
+    "carbon_monoxide": "smipoly_CO_1",
+    "formaldehyde": "smipoly_HCHO_1",
 
     # Chain growth
-    "vinyl": "smipoly_vinyl",
-    "cyclic_olefin": "smipoly_cOle",  # Note: can also be smipoly_cycCH for ROMP
-    "acrylic": "smipoly_acryl",
-    "electron_withdrawing_olefin": "smipoly_bEWole",
-    "styrenic": "smipoly_styryl",
-    "allyl": "smipoly_allyl",
-    "halogenated_olefin": "smipoly_haloCH",
-    "vinyl_ester": "smipoly_vinylester",
-    "maleic": "smipoly_malei",
-    "conjugated_diene": "smipoly_conjdiene",
-    "vinyl_ether": "smipoly_vinylether",
-    "tertiary_carbocation_olefin": "smipoly_tertcatCH",
-    "aliphatic_olefin": "smipoly_aliphCH",
+    "vinyl": "smipoly_vinyl_1",
+    "cyclic_olefin": "smipoly_cOle_1",  # Note: can also be smipoly_cycCH_1 for ROMP
+    "acrylic": "smipoly_acryl_1",
+    "electron_withdrawing_olefin": "smipoly_bEWole_1",
+    "styrenic": "smipoly_styryl_1",
+    "allyl": "smipoly_allyl_1",
+    "halogenated_olefin": "smipoly_haloCH_1",
+    "vinyl_ester": "smipoly_vinylester_1",
+    "maleic": "smipoly_malei_1",
+    "conjugated_diene": "smipoly_conjdiene_1",
+    "vinyl_ether": "smipoly_vinylether_1",
+    "tertiary_carbocation_olefin": "smipoly_tertcatCH_1",
+    "aliphatic_olefin": "smipoly_aliphCH_1",
 
     # Ring-opening
-    "lactone": "smipoly_lactone",
-    "lactam": "smipoly_lactam",
-    "epoxide": "smipoly_epo",
-    "cyclic_anhydride": "smipoly_cAnhyd",
+    "lactone": "smipoly_lactone_1",
+    "lactam": "smipoly_lactam_1",
+    "epoxide": "smipoly_epo_1",
+    "cyclic_anhydride": "smipoly_cAnhyd_1",
 
     # ROMP
-    "cyclic_olefin_romp": "smipoly_cycCH",  # For ROMP specifically
+    "cyclic_olefin_romp": "smipoly_cycCH_1",  # For ROMP specifically
 
     # Not in SMiPoly core (user additions)
     "di_acid_chloride": "di_acid_chloride",  # Included in diCOOH SMARTS

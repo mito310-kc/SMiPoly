@@ -43,12 +43,8 @@ def create_simple_mapping():
 
             if len(all_patterns) == 0:
                 continue
-            elif len(all_patterns) == 1:
-                # Single pattern: use key without suffix
-                key = f"smipoly_{monomer_name}"
-                expanded_mapping[key] = all_patterns[0]
             else:
-                # Multiple patterns: add numbered suffix
+                # Always add numbered suffix (even for single patterns)
                 for i, pattern in enumerate(all_patterns, start=1):
                     key = f"smipoly_{monomer_name}_{i}"
                     expanded_mapping[key] = pattern
