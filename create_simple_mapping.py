@@ -12,46 +12,52 @@ def load_json(filepath):
     with open(filepath, 'r') as f:
         return json.load(f)
 
-def get_representative_pattern(patterns):
+def expand_all_patterns(patterns):
     """
-    Get the most representative SMARTS pattern from a list.
-    If patterns is a string, return it directly.
-    If it's a list, return the first (usually simplest) pattern.
+    Expand all SMARTS patterns from a list or string.
+    Returns a list of patterns.
     """
     if isinstance(patterns, str):
-        return patterns
+        return [patterns]
     elif isinstance(patterns, list):
-        if len(patterns) == 0:
-            return None
-        # Return the first pattern (usually the most basic/representative)
-        return patterns[0]
-    return None
+        return [p for p in patterns if p]  # Filter out empty strings
+    return []
 
 def create_simple_mapping():
-    """Create a simple monomer name -> SMARTS pattern mapping"""
+    """Create a complete monomer name -> SMARTS pattern mapping with all patterns"""
 
     # Load the dictionaries
     rules_dir = Path('/home/user/SMiPoly/src/smipoly/rules')
     mon_dic = load_json(rules_dir / 'mon_dic.json')
     mon_lst = load_json(rules_dir / 'mon_lst.json')
 
-    # Create the simplified mapping
-    simple_mapping = {}
+    # Create the expanded mapping
+    expanded_mapping = {}
 
     for monomer_name, monomer_id in mon_dic.items():
         # Get the pattern list for this monomer ID
         patterns = mon_lst.get(str(monomer_id))
 
         if patterns is not None:
-            representative = get_representative_pattern(patterns)
-            if representative:
-                simple_mapping[monomer_name] = representative
+            all_patterns = expand_all_patterns(patterns)
 
-    return simple_mapping
+            if len(all_patterns) == 0:
+                continue
+            elif len(all_patterns) == 1:
+                # Single pattern: use key without suffix
+                key = f"smipoly_{monomer_name}"
+                expanded_mapping[key] = all_patterns[0]
+            else:
+                # Multiple patterns: add numbered suffix
+                for i, pattern in enumerate(all_patterns, start=1):
+                    key = f"smipoly_{monomer_name}_{i}"
+                    expanded_mapping[key] = pattern
+
+    return expanded_mapping
 
 def print_as_python_dict(mapping):
     """Print the mapping as a formatted Python dictionary"""
-    print("monomer_structure_dict = {")
+    print("smipoly_monomer_structure_dict = {")
 
     # Sort by key for better readability
     for key in sorted(mapping.keys()):
@@ -65,12 +71,14 @@ def print_as_python_dict(mapping):
 def save_as_python_file(mapping, output_path):
     """Save the mapping as a Python file"""
     with open(output_path, 'w') as f:
-        f.write('"""Simple monomer structure mapping\n')
+        f.write('"""Complete monomer structure mapping for SMiPoly\n')
         f.write('Generated from mon_dic.json and mon_lst.json\n')
-        f.write('Each monomer class maps to its representative SMARTS pattern.\n')
+        f.write('Each monomer class maps to all its SMARTS patterns.\n')
+        f.write('Multiple patterns are numbered with suffixes (_1, _2, ...).\n')
+        f.write('All keys are prefixed with "smipoly_" for namespace clarity.\n')
         f.write('"""\n\n')
 
-        f.write('monomer_structure_dict = {\n')
+        f.write('smipoly_monomer_structure_dict = {\n')
 
         # Sort by key for better readability
         for key in sorted(mapping.keys()):
