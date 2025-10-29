@@ -1,0 +1,40 @@
+"""Simple monomer structure mapping
+Generated from mon_dic.json and mon_lst.json
+Each monomer class maps to its representative SMARTS pattern.
+"""
+
+monomer_structure_dict = {
+    'BzodiF': '[c]1[c][c]([F])[c][c][c]1[CX3](=[OX1])[c]2[c][c][c]([F])[c][c]2',
+    'CO': '[C-]#[O+]',
+    'HCHO': '[CX3;H2]=[OX1]',
+    'acryl': '[CX3H2;!R:1]=[CX3H1;!R:2][CX3;!R](=[OX1])[OX2,SX2,NX3:3]',
+    'aliphCH': '[CX3;H2;!R:1]=[CX3;H2;!R:2]',
+    'allyl': '[CX3H2;!R:1]=[CX3H1;!R:2][CX4H2][OX2,SX2:3]',
+    'aminCOOH': '[N&X3;H2,H1;!$(N[C,S]=*)][C].[CX3](=[O])[OX2H1]',
+    'bEWole': '[CX3H2;!R:1]=[CX3H1;!R:2][CX2]#[NX1]',
+    'cAnhyd': '[C;R][C;R;X3](=[O])[O;R][C;R;X3](=[O])[C;R]',
+    'cOle': '[CX3;H1;R]=[CX3;H1;R]',
+    'conjdiene': '[CX3;H2:1]=[CX3;!R:2]-[CX3;!R:3]=[CX3;H2:4]',
+    'cycCH': '[CX3;H1;R:1]=[CX3;H1;R:2]',
+    'diCOOH': '[CX4H2][C](=[O])[OH1]',
+    'diNCO': '[C]-[NX2]=[CX2]=[O,S;X1]',
+    'diamin': '[C][N&X3;H2;!$(N[C,S]=*)]',
+    'dicAnhyd': '[C;R][C;R;X3](=[OX1])[OX2;R][C;R;X3](=[OX1])[C;R]',
+    'diepo': '[CX4H2]1[O][CX4]1',
+    'diol': '[CX4H1][OX2,SX2;H1]',
+    'diol_b': '[CX4H1][OX2;H1]',
+    'epo': '[CX4H2]1[O][CX4]1',
+    'haloCH': '[CX3;H2;!R:1]=[CX3;H1;!R:2][F,Cl:3]',
+    'hindPhenol': '[c]1([OX2H1])[c]([C])[c][cX3H1][c][c]1([C])',
+    'hydCOOH': '[O&X2;H1;!$(OC=*)][C].[CX3](=[O])[OX2H1]',
+    'lactam': '[C;R][NX3;H1;R][CX3;R](=[OX1])[C;R][C;R]',
+    'lactone': '[C;R][OX2;R][CX3;R](=[OX1])[C;R]',
+    'malei': '[CX3H1;R:1]1=[CX3H1;R:2][CX3;R](=[OX1])[NX3:3][CX3;R]1(=[OX1])',
+    'pridiamin': '[C][N&X3;H2;!$(N[C,S]=*)]',
+    'sfonediX': '[c]1[c][c]([F,Cl,Br,I])[c][c][c]1[SX4](=[OX1])(=[OX1])[c]2[c][c][c]([F,Cl,Br,I])[c][c]2',
+    'styryl': '[CX3H2;!R:1]=[CX3H1;!R:2][c:3]',
+    'tertcatCH': '[CX3;H2;!R:1]=[CX3;H0;!R:2]([CX4H3])[CX4H2:3]',
+    'vinyl': '[CX3H2]=[CX3]',
+    'vinylester': '[CX3H2:1]=[CX3H1:2][OX2][CX3:3](=[OX1])',
+    'vinylether': '[CX3H2:1]=[CX3:2][OX2][CX4:3]',
+}
